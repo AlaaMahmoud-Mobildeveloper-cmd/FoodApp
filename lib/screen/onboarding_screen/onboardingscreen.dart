@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food/core/caching.dart';
-import 'package:food/core/colors.dart';
+
+import 'package:food/core/image_app.dart';
 import 'package:food/core/style.dart';
 import 'package:food/screen/home_screen/homescreen.dart';
 import 'package:introduction_screen/introduction_screen.dart';
@@ -54,12 +55,12 @@ class OnboardingScreen extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color:  AppColors.brandingColor,
+          color:  Theme.of(context).colorScheme.primary,
         ),
         child: Text("Skip",
           textAlign: TextAlign.center,
           style: AppStyle.bodyIntroStyle.copyWith(
-              color: AppColors.whiteColor
+              color: Theme.of(context).colorScheme.onPrimary
           ),
         ),
       ),
@@ -73,12 +74,12 @@ class OnboardingScreen extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color:  AppColors.brandingColor,
+          color:  Theme.of(context).colorScheme.primary,
         ),
         child: Text("Next",
         textAlign: TextAlign.center,
           style: AppStyle.bodyIntroStyle.copyWith(
-            color: AppColors.whiteColor
+            color: Theme.of(context).colorScheme.onPrimary
           ),
         ),
       ),
@@ -87,12 +88,12 @@ class OnboardingScreen extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color:  AppColors.brandingColor,
+          color:  Theme.of(context).colorScheme.primary,
         ),
         child: Text("Done",
           textAlign: TextAlign.center,
           style: AppStyle.bodyIntroStyle.copyWith(
-              color: AppColors.whiteColor
+              color: Theme.of(context).colorScheme.onPrimary
           ),
         ),
       ),
@@ -103,7 +104,7 @@ class OnboardingScreen extends StatelessWidget {
      dotsDecorator: DotsDecorator(
          size:  Size.square(10.0),
          activeSize:  Size(40.0, 10.0),
-       activeColor: AppColors.brandingColor,
+       activeColor: Theme.of(context).colorScheme.primary,
          spacing: const EdgeInsets.symmetric(horizontal: 3.0),
       activeShape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(25.0)

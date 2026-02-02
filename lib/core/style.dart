@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food/core/colors.dart';
+import 'package:food/core/image_app.dart';
 
 class AppStyle{
   static TextStyle titleStyle=TextStyle(fontSize: 24,

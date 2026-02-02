@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:food/core/caching.dart';
+import 'package:food/core/image_app.dart';
+import 'package:food/provider/theme_provider.dart';
 import 'package:food/screen/home_screen/homescreen.dart';
 import 'package:food/screen/localiztion_screen/localizScreen.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String routeName ="SplashScreen";
@@ -15,12 +18,15 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    //call function to navigate to next screen
     getNext();
   }
   @override
   Widget build(BuildContext context) {
+    var themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
+      backgroundColor: themeProvider.themeMode == ThemeMode.light
+          ? Theme.of(context).colorScheme.surface
+          : Theme.of(context).colorScheme.surface,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -35,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
              ),
              Positioned(
                top: -150,
-                 child:  Image.asset("assets/images/hed.png",
+                 child:  Image.asset(AppImage.topSplash,
                    width: 300,
                    fit: BoxFit.cover,
                  )
@@ -43,7 +49,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
            ],
          ),
-          Image.asset("assets/images/food.png",width: 200,),
+          Image.asset(themeProvider.themeMode==ThemeMode.light
+              ?AppImage.lightLogo
+              :AppImage.darkLogo
+            ,width: 200,),
           Stack(
             clipBehavior: Clip.none,
             children: [
@@ -55,7 +64,7 @@ class _SplashScreenState extends State<SplashScreen> {
              Positioned(
                  right: 0,
                  bottom: -160,
-                 child: Image.asset("assets/images/fot.png",
+                 child: Image.asset(AppImage.bottomSplash,
                    width: 300,
                    fit: BoxFit.cover,
                  )
@@ -66,7 +75,7 @@ class _SplashScreenState extends State<SplashScreen> {
       ),
     );
   }
-  //function to navigate to next screen
+
   void getNext(){
     Future.delayed(Duration(seconds: 10),(){
       Navigator.pushReplacementNamed(context,CachingHelper.getBool("intro") == true
